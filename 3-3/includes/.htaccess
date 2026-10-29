@@ -1,0 +1,2 @@
+# Nadie puede abrir los archivos de esta carpeta desde el navegador (Apache 2.4)
+Require all denied

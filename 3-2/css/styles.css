@@ -1,0 +1,277 @@
+/* =========================================================
+   Preferencias — estilo inspirado en el design system de Tesla
+   · Plano: sin sombras, sin degradados, sin bordes en tarjetas
+   · Un único color de acento (#3E6AE1), solo para el CTA principal
+   · Pesos 400/500, radio de 4px, transiciones de 0.33s solo de color
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ─── Tokens comunes ─── */
+:root {
+    /* Universal Sans no es pública: se cae a la fuente del sistema */
+    --font-display: "Universal Sans Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    --font-text: "Universal Sans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+    --azul: #3E6AE1;
+    /* Electric Blue */
+    --azul-hover: #3457C2;
+    /* oscurecido sutil para hover */
+
+    --radio: 4px;
+    --radio-panel: 12px;
+    --t: 0.33s cubic-bezier(0.5, 0, 0, 0.75);
+}
+
+/* ─── Tema claro ─── */
+body.tema-claro {
+    color-scheme: light;
+    --fondo: #F4F4F4;
+    /* Light Ash */
+    --superficie: #FFFFFF;
+    /* Pure White */
+    --superficie-alt: #F4F4F4;
+    /* Light Ash */
+    --superficie-hov: #EEEEEE;
+    /* Cloud Gray */
+    --titulo: #171A20;
+    /* Carbon Dark */
+    --texto: #393C41;
+    /* Graphite */
+    --texto-suave: #5C5E62;
+    /* Pewter */
+    --placeholder: #8E8E8E;
+    /* Silver Fog */
+    --linea: #EEEEEE;
+    /* Cloud Gray */
+    --error: #C8102E;
+    --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23393C41' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+/* ─── Tema oscuro (derivado de Carbon Dark: la web de Tesla no tiene modo oscuro) ─── */
+body.tema-oscuro {
+    color-scheme: dark;
+    --fondo: #171A20;
+    /* Carbon Dark */
+    --superficie: #22252B;
+    --superficie-alt: #2E3138;
+    --superficie-hov: #393C41;
+    /* Graphite */
+    --titulo: #FFFFFF;
+    --texto: #D0D1D2;
+    /* Pale Silver */
+    --texto-suave: #8E8E8E;
+    /* Silver Fog */
+    --placeholder: #5C5E62;
+    /* Pewter */
+    --linea: #393C41;
+    --error: #FF6B6B;
+    --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23D0D1D2' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+/* ─── Base ─── */
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+    font-family: var(--font-text);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    background-color: var(--fondo);
+    color: var(--texto);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color var(--t), color var(--t);
+}
+
+/* ─── Panel ─── */
+main,
+.card {
+    width: 100%;
+    max-width: 420px;
+    padding: 48px 40px;
+    background-color: var(--superficie);
+    border-radius: var(--radio-panel);
+    transition: background-color var(--t);
+}
+
+h1,
+.card h1 {
+    font-family: var(--font-display);
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 500;
+    color: var(--titulo);
+    margin-bottom: 8px;
+}
+
+main>p,
+.subtitulo {
+    color: var(--texto-suave);
+    margin-bottom: 40px;
+}
+
+/* ─── Campos ─── */
+.input--camp {
+    margin-bottom: 24px;
+}
+
+.input--camp label {
+    display: block;
+    font-size: 14px;
+    line-height: 16.8px;
+    font-weight: 500;
+    color: var(--titulo);
+    margin-bottom: 8px;
+}
+
+.input--camp select {
+    appearance: none;
+    width: 100%;
+    min-height: 40px;
+    padding: 0 40px 0 16px;
+    font: inherit;
+    color: var(--titulo);
+    background: var(--superficie-alt) var(--chevron) no-repeat right 16px center;
+    border: none;
+    border-radius: var(--radio);
+    box-shadow: inset 0 0 0 2px transparent;
+    cursor: pointer;
+    outline: none;
+    transition: background-color var(--t), box-shadow 0.25s;
+}
+
+.input--camp select:hover {
+    background-color: var(--superficie-hov);
+}
+
+.input--camp select:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--titulo);
+}
+
+/* ─── Botones ─── */
+.botones {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+button {
+    flex: 1;
+    min-height: 40px;
+    padding: 4px 16px;
+    font: inherit;
+    font-weight: 500;
+    line-height: 16.8px;
+    color: #FFFFFF;
+    background-color: var(--azul);
+    border: 3px solid transparent;
+    border-radius: var(--radio);
+    box-shadow: inset 0 0 0 2px transparent;
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--t), background-color var(--t), color var(--t), box-shadow 0.25s;
+}
+
+button:hover {
+    background-color: var(--azul-hover);
+}
+
+button:focus-visible {
+    box-shadow: inset 0 0 0 2px #FFFFFF;
+}
+
+/* Secundario: sin color de acento */
+button[value="borrar"],
+button.secundario {
+    color: var(--texto);
+    background-color: var(--superficie-alt);
+}
+
+button[value="borrar"]:hover,
+button.secundario:hover {
+    color: var(--titulo);
+    background-color: var(--superficie-hov);
+}
+
+button[value="borrar"]:focus-visible,
+button.secundario:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--titulo);
+}
+
+/* ─── Mensajes (sin colores semánticos salvo el error) ─── */
+.mensaje {
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    border-radius: var(--radio);
+    background-color: var(--superficie-alt);
+    color: var(--titulo);
+}
+
+.mensaje--error {
+    color: var(--error);
+}
+
+/* ─── Bloque de depuración ─── */
+.debug {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--linea);
+    font-size: 12px;
+    color: var(--texto-suave);
+}
+
+.debug summary {
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: color var(--t);
+}
+
+.debug summary:hover {
+    color: var(--titulo);
+}
+
+.debug ul {
+    list-style: none;
+}
+
+.debug code {
+    font-family: ui-monospace, Consolas, monospace;
+    color: var(--texto);
+}
+
+/* ─── Móvil ─── */
+@media (max-width: 767px) {
+
+    main,
+    .card {
+        padding: 32px 24px;
+    }
+
+    h1,
+    .card h1 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .botones {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}

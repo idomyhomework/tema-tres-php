@@ -1,0 +1,297 @@
+/* =========================================================
+   Control de acceso — estilo basado en el design system de Apple
+   (mismos tokens que formulario.css)
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --font: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+
+    --primary:       #0066cc;
+    --primary-focus: #0071e3;
+    --on-primary:    #ffffff;
+
+    --ink:           #1d1d1f;
+    --ink-muted-80:  #333333;
+    --ink-muted-48:  #7a7a7a;
+
+    --canvas:        #ffffff;
+    --parchment:     #f5f5f7;
+    --pearl:         #fafafc;
+    --hairline:      #e0e0e0;
+    --tile-dark:     #272729;
+
+    --error:         #e30000;   /* el sistema no define estados: valores propios */
+    --ok:            #1d7a3a;
+
+    --r-sm:   8px;
+    --r-lg:   18px;
+    --r-pill: 9999px;
+}
+
+/* ─── Base ─── */
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: 48px 16px;
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+    color: var(--ink);
+    background-color: var(--parchment);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Tarjeta ─── */
+.card {
+    width: 100%;
+    max-width: 440px;
+    padding: 48px 40px;
+    background-color: var(--canvas);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-lg);
+}
+
+.card--ancha {
+    max-width: 640px;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.28px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.19;
+    letter-spacing: 0.231px;
+    margin: 32px 0 12px;
+}
+
+.subtitulo {
+    color: var(--ink-muted-48);
+    margin-bottom: 32px;
+}
+
+/* ─── Mensajes ─── */
+.mensaje {
+    padding: 12px 17px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 1.43;
+    letter-spacing: -0.224px;
+    background-color: var(--parchment);
+    border-radius: var(--r-sm);
+}
+
+.mensaje--error { color: var(--error); }
+.mensaje--ok    { color: var(--ok); }
+
+/* ─── Formulario ─── */
+.input--camp {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.input--camp label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.29;
+    letter-spacing: -0.224px;
+}
+
+.input--camp input {
+    width: 100%;
+    height: 44px;
+    padding: 12px 20px;
+    font: inherit;
+    letter-spacing: inherit;
+    color: var(--ink);
+    background-color: var(--canvas);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-pill);
+    outline: none;
+}
+
+.input--camp input:focus-visible {
+    border-color: transparent;
+    outline: 2px solid var(--primary-focus);
+}
+
+/* ─── Botones ─── */
+button {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 8px;
+    padding: 11px 22px;
+    font: inherit;
+    letter-spacing: inherit;
+    color: var(--on-primary);
+    background-color: var(--primary);
+    border: none;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--primary-focus);
+    outline-offset: 2px;
+}
+
+/* Ghost pill para "Cerrar sesión" */
+.boton-secundario {
+    width: auto;
+    min-height: 36px;
+    margin: 0;
+    padding: 6px 18px;
+    font-size: 14px;
+    letter-spacing: -0.224px;
+    color: var(--primary);
+    background-color: transparent;
+    border: 1px solid var(--primary);
+}
+
+/* ─── Barra superior ─── */
+.barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.barra__usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.barra__nombre {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ─── Chips de rol ─── */
+.chip {
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: -0.12px;
+    border-radius: var(--r-pill);
+}
+
+.chip--admin {
+    color: var(--on-primary);
+    background-color: var(--tile-dark);
+}
+
+.chip--usuario {
+    color: var(--ink-muted-80);
+    background-color: var(--parchment);
+}
+
+/* ─── Lista de usuarios ─── */
+.lista {
+    list-style: none;
+    margin-bottom: 32px;
+}
+
+.lista__fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.lista__fila:last-child {
+    border-bottom: none;
+}
+
+/* ─── Enlaces ─── */
+.enlace {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.enlace:focus-visible {
+    outline: 2px solid var(--primary-focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ─── Depuración ─── */
+.debug {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+    font-size: 12px;
+    letter-spacing: -0.12px;
+    color: var(--ink-muted-48);
+}
+
+.debug summary {
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.debug ul {
+    list-style: none;
+}
+
+.debug code {
+    font-family: ui-monospace, Consolas, monospace;
+    color: var(--ink-muted-80);
+    word-break: break-all;
+}
+
+/* ─── Móvil ─── */
+@media (max-width: 640px) {
+    body {
+        padding: 24px 16px;
+    }
+
+    .card {
+        padding: 32px 24px;
+    }
+
+    h1 {
+        font-size: 28px;
+        line-height: 1.14;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
