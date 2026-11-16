@@ -16,7 +16,7 @@ const REALM = 'Zona Segura de Descargas';
 // Lista de usuarios autorizados (contraseñas hasheadas con password_hash()).
 const AUTORIZADOS = [
     'direccion' => '$2y$10$0fsa1KgM9cDzOP4o3cXcUu4BgWxnj7GD/TIOCI1glQioPdGZdCBIm',
-    'auditor'   => '$2y$10$h9.AAXwPAYhKUjLNtnvaeuIlqyEznYAYaDEm1BHcFyG9AqcdiclOG',
+    'auditor' => '$2y$10$h9.AAXwPAYhKUjLNtnvaeuIlqyEznYAYaDEm1BHcFyG9AqcdiclOG',
 ];
 
 const HASH_FALSO = '$2y$10$QNsHvdYYXnzuoY.3VrJnGOvbiIvJRSqntadMI4TDgecgQuC4zjj9K';
@@ -40,9 +40,9 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
 // 2) Validamos lo recibido
 $usuario = (string) $_SERVER['PHP_AUTH_USER'];
-$pass    = (string) ($_SERVER['PHP_AUTH_PW'] ?? '');
+$pass = (string) ($_SERVER['PHP_AUTH_PW'] ?? '');
 
-$hash   = AUTORIZADOS[$usuario] ?? HASH_FALSO;
+$hash = AUTORIZADOS[$usuario] ?? HASH_FALSO;
 $valido = password_verify($pass, $hash) && isset(AUTORIZADOS[$usuario]);
 
 if (!$valido) {
@@ -85,7 +85,7 @@ $u = htmlspecialchars($usuario, ENT_QUOTES, 'UTF-8');
 
     <p><a href="?descargar=1">Descargar informe (.txt)</a></p>
     <p><small>Para "cerrar sesión" con Basic Auth hay que cerrar el navegador:
-        este guarda las credenciales y las reenvía en cada petición.</small></p>
+            este guarda las credenciales y las reenvía en cada petición.</small></p>
 </body>
 
 </html>
