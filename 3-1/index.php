@@ -14,7 +14,7 @@
     $error = "";
     $user = "";
 
-    // validar input con isset y emplty
+    // validar input con isset y empty
     function validateInput($var): bool
     {
         if (!isset($var) || empty(trim($var))) {
@@ -44,12 +44,12 @@
     ?>
 
     <!-- mostramos el error si hay -->
-        <?php if (!empty($error)): ?>
+    <?php if (!empty($error)): ?>
         <h3 style="color: red;"><?php echo $error; ?></h3>
-        <?php elseif ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
+    <?php elseif ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
         <!-- bienvenida al usuario  -->
         <p>Bienvenido <?php echo htmlspecialchars($user); ?>!</p>
-        <?php endif; ?>
+    <?php endif; ?>
 
 </body>
 

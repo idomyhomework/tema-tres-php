@@ -1,0 +1,4 @@
+# El log de auditoría no debe poder descargarse desde el navegador
+<Files "accesos.txt">
+    Require all denied
+</Files>

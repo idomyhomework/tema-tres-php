@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Página maliciosa (simulación)</title>
+</head>
+
+<body>
+    <h1>¡Has ganado un premio!</h1>
+    <p>Simulación de una web atacante: este formulario intenta cambiar el correo de la víctima
+        aprovechando su sesión abierta, pero no conoce el token CSRF.</p>
+
+    <form action="perfil.php" method="post">
+        <input type="hidden" name="email" value="atacante@malicioso.com">
+        <input type="hidden" name="csrf_token" value="token-inventado">
+        <button type="submit">Reclamar premio</button>
+    </form>
+
+    <p>Resultado esperado: <strong>403 Forbidden – petición ilegítima</strong>.</p>
+</body>
+
+</html>

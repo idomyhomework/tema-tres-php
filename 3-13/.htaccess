@@ -1,0 +1,5 @@
+# Solo hace falta si PHP se ejecuta como PHP-FPM/CGI (no con mod_php):
+# Apache no pasa la cabecera Authorization a PHP y PHP_AUTH_USER llega vacío.
+# Descomenta la línea (requiere "AllowOverride AuthConfig" o "All"):
+#
+# CGIPassAuth On
